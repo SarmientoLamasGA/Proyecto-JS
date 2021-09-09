@@ -1,0 +1,39 @@
+.nos {
+  .nos__top {
+    position: relative;
+    .nos__text {
+      position: relative;
+      .nos__titles {
+        font-size: 2rem;
+      }
+      .nos__info {
+        font-size: 1.3rem;
+        letter-spacing: 3px;
+        word-spacing: 3px;
+        text-align: justify;
+        margin: 0 2.5% 0 2.5%;
+      }
+    }
+    .nos__photo {
+      /*max-height: 250px;
+      max-width: 80%;
+      min-width: 190px;*/
+      margin: 2.5% auto 2.5% auto;
+      width: 40%;
+      height: 40%;
+      min-width: 250px;
+      min-height: 250px;
+      max-width: 450px;
+      max-height: 450px;
+      aspect-ratio: 1/1;
+      display: flex;
+    }
+  }
+  .nos__bottom {
+    margin: 5% 0;
+    .nos__map {
+      height: 50vh;
+      width: 97.5%;
+    }
+  }
+}

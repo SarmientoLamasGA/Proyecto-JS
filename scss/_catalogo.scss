@@ -1,0 +1,185 @@
+.user-bar {
+  display: flex;
+  flex-direction: row;
+  .user-bar__cart-section {
+    margin: 0 2.5% 0 2.5%;
+    padding: 1rem;
+    .user-bar__cart-info {
+      display: flex;
+      a {
+        display: flex;
+        #cart-img {
+          align-self: center;
+          height: 3rem;
+        }
+      }
+      #cartNumber {
+        font-size: 1rem;
+        font: bold;
+        padding: 1rem;
+        margin: 1rem;
+        align-self: center;
+      }
+      .colorCantidad {
+        background-color: pink;
+      }
+    }
+  }
+}
+
+.compras {
+  .title-box {
+    display: flex;
+    flex-direction: column;
+  }
+  .catalogo {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .caja-de-producto {
+      .titulo-tarjeta {
+        text-align: center;
+        text-transform: uppercase;
+      }
+      background-color: $color-salmon;
+      padding: 2rem;
+      width: 30%;
+      height: 20%;
+      margin: 3rem auto 3rem auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .muestrario {
+        display: flex;
+        justify-content: center;
+        .foto-producto {
+          aspect-ratio: 1/1;
+          width: 70%;
+          height: 70%;
+        }
+      }
+      .texto-producto {
+        margin: 2rem;
+        text-align: center;
+        p {
+          font-size: 1.3rem;
+        }
+      }
+      .boton {
+        width: 50%;
+        align-self: center;
+      }
+    }
+  }
+}
+
+#buySection {
+  display: none;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  #buyDiv {
+    margin: 2rem auto 2rem auto;
+    width: 80%;
+    background-color: $color-salmon;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    #cierre {
+      #textCross {
+        display: none;
+        position: relative;
+        display: inline-block;
+      }
+      #closeCross {
+        width: 10px;
+        margin: 10px;
+        &:hover {
+          transform: scale(1.3);
+          transition: 1s;
+          cursor: pointer;
+          #textCross {
+            display: inline-block;
+          }
+        }
+      }
+    }
+
+    .cartTitle {
+      font-size: 1.9rem;
+      margin-top: 0.5rem;
+      margin-bottom: 0.7rem;
+    }
+    .cart {
+      width: 80%;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      .emptyCart {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+      }
+      #list {
+        .buyListObject {
+          display: flex;
+          flex-direction: column;
+          align-content: center;
+          font-size: 1.3rem;
+        }
+        .buyListTotal {
+          display: flex;
+          flex-direction: column;
+          align-content: center;
+          background-color: $color-salmon-intenso;
+          font-size: 1.5rem;
+          font-weight: bold;
+        }
+      }
+      #calcular-total {
+        width: 30%;
+        align-self: center;
+        margin: 1rem;
+      }
+      .boton-final {
+        width: 30%;
+        align-self: center;
+        margin: 1rem;
+      }
+    }
+    .checked {
+      display: flex;
+      align-self: center;
+      font-size: 2rem;
+    }
+    .sendList {
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      font-size: 1.3rem;
+    }
+  }
+}
+
+.mensajeCompra {
+  display: flex;
+  flex-direction: column;
+  background-color: $color-salmon-intenso;
+  color: black;
+  font-size: 1.3rem;
+  font-weight: bold;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-bottom-right-radius: 30px;
+}

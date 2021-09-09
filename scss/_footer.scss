@@ -1,0 +1,32 @@
+.footer {
+  background-image: linear-gradient($color-crema, $color-verde);
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  align-items: center;
+  bottom: 0;
+  padding: 2vh;
+  padding-bottom: 0;
+  width: 100%;
+  .footer__copyright {
+    color: black;
+    grid-area: copyright;
+    align-self: center;
+    font-size: 1.9rem;
+    margin: 1rem;
+    padding: 2rem;
+  }
+  .footer__logo-container {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 2vh;
+  }
+  .footer__logos {
+    margin: 0.25rem 1rem 0.25rem 1rem;
+    height: 6rem;
+    width: 6rem;
+  }
+}

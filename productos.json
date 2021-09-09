@@ -1,0 +1,86 @@
+[
+  {
+    "productos": [
+      {
+        "id": 1,
+        "nombre": "Bar",
+        "cajones": true,
+        "notas": false,
+        "lapicero": false,
+        "precio": 350
+      },
+      {
+        "id": 2,
+        "nombre": "Dani",
+        "cajones": false,
+        "notas": false,
+        "lapicero": true,
+        "precio": 300
+      },
+      {
+        "id": 3,
+        "nombre": "Feli",
+        "cajones": true,
+        "notas": true,
+        "lapicero": false,
+        "precio": 550
+      },
+      {
+        "id": 4,
+        "nombre": "Koki",
+        "cajones": false,
+        "notas": false,
+        "lapicero": true,
+        "precio": 400
+      },
+      {
+        "id": 5,
+        "nombre": "Mar",
+        "cajones": true,
+        "notas": true,
+        "lapicero": true,
+        "precio": 650
+      },
+      {
+        "id": 6,
+        "nombre": "Milo",
+        "cajones": true,
+        "notas": false,
+        "lapicero": false,
+        "precio": 400
+      },
+      {
+        "id": 7,
+        "nombre": "Pili",
+        "cajones": true,
+        "notas": true,
+        "lapicero": true,
+        "precio": 750
+      },
+      {
+        "id": 8,
+        "nombre": "Studygram",
+        "cajones": true,
+        "notas": true,
+        "lapicero": true,
+        "precio": 950
+      },
+      {
+        "id": 9,
+        "nombre": "Tony",
+        "cajones": false,
+        "notas": false,
+        "lapicero": true,
+        "precio": 550
+      },
+      {
+        "id": 10,
+        "nombre": "Valen",
+        "cajones": true,
+        "notas": true,
+        "lapicero": true,
+        "precio": 700
+      }
+    ]
+  }
+]

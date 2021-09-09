@@ -1,0 +1,47 @@
+.form {
+  background-color: #fadbd8;
+  width: 80%;
+  margin: 30px auto auto auto;
+  font-size: 1.3rem;
+  .form__title {
+    font-size: 4rem;
+    text-align: center;
+    padding: 1%;
+  }
+  .form__personal {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    label {
+      margin: 1%;
+    }
+    .form-control {
+      width: 75%;
+      margin: auto;
+    }
+  }
+  .form__check {
+    width: 75%;
+    margin: 1% auto 1% auto;
+    text-align: center;
+    p {
+      text-align: center;
+    }
+  }
+  .form__text-area {
+    width: 75%;
+    margin: 1% 12.5% 0 12.5%;
+  }
+  .form__button {
+    margin: 2% 5% 2% 5%;
+    padding: 0.5%;
+    background: linear-gradient(#45d627, #7bdb68);
+    border-style: none;
+  }
+  .form__button--delete {
+    margin: 2% 5% 2% 5%;
+    padding: 0.5%;
+    background: linear-gradient(#d62727, #db6868);
+    border-style: none;
+  }
+}

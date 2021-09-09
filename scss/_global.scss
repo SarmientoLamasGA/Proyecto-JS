@@ -1,0 +1,88 @@
+/*format*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 55%;
+}
+
+/*variables */
+$color-verde: #a9dfbf;
+$color-crema: #fcf3cf;
+$color-salmon: #ffd6ba;
+$color-salmon-intenso: #f5ad7d;
+
+/*body global*/
+body {
+  background-color: $color-crema;
+}
+.titles {
+  color: rgb(177, 34, 177);
+  font-family: "Hachi Maru Pop", cursive;
+  font-size: calc(1.4rem + 1.5vw);
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 10px;
+  margin: 2vh;
+  text-transform: uppercase;
+  text-shadow: #fffca8 2px 2px 0px, #9c9c9c 4px 4px 0px;
+}
+
+.subtitles {
+  color: rgb(177, 34, 177);
+  font-family: "Hachi Maru Pop", cursive;
+  font-size: calc(1.54rem + 1.2vw);
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 10px;
+  margin: 2vh;
+  text-shadow: whitesmoke;
+  text-shadow: #fffca8 2px 2px 0px, #9c9c9c 4px 4px 0px;
+}
+
+@media only screen and (min-width: 768px) {
+  html {
+    font-size: 62.5%;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  html {
+    font-size: 62.5%;
+  }
+}
+
+@media only screen and (min-width: 1201px) {
+  html {
+    font-size: 70%;
+  }
+}
+
+/*404*/
+.container-404 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  div {
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      margin-top: 2rem;
+    }
+    p {
+      text-align: center;
+      font-size: 1.6rem;
+      margin-top: 2rem;
+    }
+  }
+  width: 100%;
+  margin: auto;
+  a {
+    .img-404 {
+      width: 50rem;
+      margin-bottom: 15rem;
+    }
+  }
+}

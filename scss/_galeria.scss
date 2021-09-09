@@ -1,0 +1,56 @@
+.organizador-pili {
+  margin: 0 auto 5% auto;
+  padding: 0 0 2% 0;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $color-salmon;
+  .subtitulo-pili {
+    font-size: 1.7rem;
+  }
+  .video-pili {
+    width: 30%;
+    min-width: 150px;
+    /*max-height: ;*/
+  }
+}
+
+.product-box {
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+  padding: 0;
+  .product-box__gallery {
+    .product-box__photo-container {
+      padding: 0;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: baseline;
+      padding: 1%;
+      background-color: $color-salmon;
+      .product-box__img {
+        height: 25%;
+        width: 25%;
+        max-height: 500px;
+        max-width: 500px;
+        min-width: 200px;
+        margin: 0.5%;
+        border-radius: 10%;
+        aspect-ratio: 1/1;
+        &:hover {
+          transform: scale(1.7);
+          transition: 1s;
+          cursor: zoom-in;
+          z-index: 1;
+        }
+      }
+    }
+  }
+  .product-box__body {
+    text-align: center;
+    background-color: #edbb99;
+    font-size: 1.3rem;
+  }
+}
