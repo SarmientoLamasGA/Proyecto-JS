@@ -21,6 +21,7 @@ function crearCatalogo() {
   let click = 0;
 
   $.getJSON(productosJSON, function (respuesta, estado) {
+    //se trae el array en json de productos para luego crear el DOM
     if (estado === "success") {
       let productos = respuesta;
       for (const info of productos) {
@@ -68,6 +69,7 @@ function crearCatalogo() {
 }
 
 function messageAdd(click) {
+  //Mensaje de producto agregado al carro
   if (click <= 1) {
     $(`main`).append(`<div class="mensajeCompra"></div>`);
     $(`.mensajeCompra`).append(
@@ -153,6 +155,7 @@ function saveList() {
 }
 
 function sendList(i) {
+  //se realiza el post del cart
   const URLGET = `https://jsonplaceholder.typicode.com/posts`;
   i++;
   $(`#enviar-compra`).on(`click`, function () {
