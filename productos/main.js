@@ -30,7 +30,7 @@ function crearCatalogo() {
           <h3 class="titulo-tarjeta">ORGANIZADOR ${producto.nombre}</h3>
           <div class="muestrario" id="caja-${producto.nombre}">
           <img class="foto-producto"
-          src="Multimedia/Emprendimiento/Organizador ${producto.nombre}/${producto.nombre}1.jpg"
+          src="../Multimedia/Emprendimiento/Organizador ${producto.nombre}/${producto.nombre}1.jpg"
           alt="Foto del producto ${producto.nombre}"/>
           </div>
           <div class="texto-producto"><p>$${producto.precio}</p></div>
