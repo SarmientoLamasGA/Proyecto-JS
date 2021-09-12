@@ -301,8 +301,8 @@ header nav .nav__navbar .nav__collapse .nav__list .nav__item .nav__link .nav__bu
 }
 
 .index .principal {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url("MultimediamprendimientoPrincipal.jpg");
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("MultimediamprendimientoPrincipal.jpg");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url("../Multimedia/Emprendimiento/Principal.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../Multimedia/Emprendimiento/Principal.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
