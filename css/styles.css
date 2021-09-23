@@ -670,6 +670,9 @@ header nav .nav__navbar .nav__collapse .nav__list .nav__item .nav__link .nav__bu
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .user-bar .user-bar__cart-section {
@@ -698,7 +701,6 @@ header nav .nav__navbar .nav__collapse .nav__list .nav__item .nav__link .nav__bu
 
 .user-bar .user-bar__cart-section .user-bar__cart-info #cartNumber {
   font-size: 1rem;
-  font: bold;
   padding: 1rem;
   margin: 1rem;
   -ms-flex-item-align: center;
@@ -708,6 +710,18 @@ header nav .nav__navbar .nav__collapse .nav__list .nav__item .nav__link .nav__bu
 
 .user-bar .user-bar__cart-section .user-bar__cart-info .colorCantidad {
   background-color: pink;
+}
+
+.user-bar .user-bar__user-section {
+  margin: 0 2.5% 0 2.5%;
+  padding: 1rem;
+}
+
+.user-bar .user-bar__user-section .user-bar__user-info {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-size: 1rem;
 }
 
 .compras .title-box {

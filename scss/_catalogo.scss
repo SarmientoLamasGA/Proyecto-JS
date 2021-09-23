@@ -1,6 +1,7 @@
 .user-bar {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   .user-bar__cart-section {
     margin: 0 2.5% 0 2.5%;
     padding: 1rem;
@@ -15,7 +16,6 @@
       }
       #cartNumber {
         font-size: 1rem;
-        font: bold;
         padding: 1rem;
         margin: 1rem;
         align-self: center;
@@ -23,6 +23,14 @@
       .colorCantidad {
         background-color: pink;
       }
+    }
+  }
+  .user-bar__user-section {
+    margin: 0 2.5% 0 2.5%;
+    padding: 1rem;
+    .user-bar__user-info {
+      align-self: center;
+      font-size: 1rem;
     }
   }
 }

@@ -1,6 +1,21 @@
+//Constructor
+class Cliente {
+  //DATOS CLIENTES
+  constructor(dni, nombre, apellido) {
+    this.dni = parseInt(dni);
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.usuario = nombre + apellido;
+  }
+  mostrarDatos() {
+    console.log(this.nombre + this.apellido + this.id);
+  }
+}
+
 // ARRAY
 const productosJSON = "productos.json";
 const cart = [];
+let Clientes = [];
 
 //CARRITO
 function displayCart() {
@@ -13,6 +28,26 @@ function closeCart() {
   $(`#cierre`).on(`click`, function () {
     $(`#buySection`).fadeOut(500);
   });
+}
+
+//Generar usuario
+function createUser() {
+  $(`#submit-form`).on(`click`, function (e) {
+    e.preventDefault();
+
+    let dniUsuario = $(`#dni`).val();
+    let nombreUsuario = $(`#nombre`).val();
+    let apellidoUsuario = $(`#apellido`).val();
+
+    let cliente = new Cliente(dniUsuario, nombreUsuario, apellidoUsuario);
+
+    saveUser(cliente);
+  });
+}
+
+function saveUser(cliente) {
+  Clientes.push(cliente);
+  localStorage.setItem(1, JSON.stringify(Clientes));
 }
 
 //EDICION DOM
@@ -172,9 +207,17 @@ function sendList(i) {
 
 // anidacion
 function app() {
+  //Funciones carro
   displayCart();
   closeCart();
+
+  //Funciones usuario
+  createUser();
+
+  //Funcion catalogo
   crearCatalogo();
+
+  //Guardar carro
   saveList();
 }
 
