@@ -1,5 +1,5 @@
 //Constructor
-class Cliente {
+class User {
   //DATOS CLIENTES
   constructor(dni, nombre, apellido, compra, datosTarjeta) {
     this.dni = parseInt(dni);
@@ -7,9 +7,6 @@ class Cliente {
     this.apellido = apellido;
     this.compra = compra;
     this.datosTarjeta = datosTarjeta;
-  }
-  mostrarDatos() {
-    console.log(this.nombre + this.apellido + this.id);
   }
 }
 
@@ -40,7 +37,6 @@ class datosTarjeta {
 // ARRAY
 const productosJSON = "productos.json";
 const cart = [];
-let Clientes = [];
 
 //CARRITO
 function displayCart() {
@@ -64,15 +60,23 @@ function createUser() {
     let nombreUsuario = $(`#nombre`).val();
     let apellidoUsuario = $(`#apellido`).val();
 
-    let cliente = new Cliente(dniUsuario, nombreUsuario, apellidoUsuario);
+    let usuario = new User(dniUsuario, nombreUsuario, apellidoUsuario);
 
-    saveUser(cliente);
+    saveUser(usuario);
+    checkUser();
   });
 }
 
-function saveUser(cliente) {
-  Clientes.push(cliente);
-  localStorage.setItem(1, JSON.stringify(Clientes));
+function saveUser(usuario) {
+  localStorage.setItem(1, JSON.stringify(usuario));
+}
+
+function checkUser() {
+  if (usuario == 1) {
+    const userLogged = Clientes.find((element) => element === 1);
+    alert(userLogged);
+    $(`#logIn`).load().empty().append(`${userLogged}`);
+  }
 }
 
 //EDICION DOM
