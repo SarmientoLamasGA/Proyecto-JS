@@ -1,14 +1,39 @@
 //Constructor
 class Cliente {
   //DATOS CLIENTES
-  constructor(dni, nombre, apellido) {
+  constructor(dni, nombre, apellido, compra, datosTarjeta) {
     this.dni = parseInt(dni);
     this.nombre = nombre;
     this.apellido = apellido;
-    this.usuario = nombre + apellido;
+    this.compra = compra;
+    this.datosTarjeta = datosTarjeta;
   }
   mostrarDatos() {
     console.log(this.nombre + this.apellido + this.id);
+  }
+}
+
+class datosTarjeta {
+  constructor(
+    nombre,
+    apellido,
+    dni,
+    email,
+    telefono,
+    tipoTarjeta,
+    numTarjeta,
+    vencimiento,
+    codSeguridad
+  ) {
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.dni = dni;
+    this.email = email;
+    this.telefono = telefono;
+    this.tipoTarjeta = tipoTarjeta;
+    this.numTarjeta = numTarjeta;
+    this.vencimiento = vencimiento;
+    this.codSeguridad = codSeguridad;
   }
 }
 
@@ -179,30 +204,79 @@ function saveList() {
       );
     } else {
       if (i == 1) {
-        $(`#cart`).append(`<p class="checked">Compra guardada ✔</p>
-      <button class="boton-final" id="enviar-compra">Enviar compra</button>`);
+        $(`#cart`)
+          .append(
+            `<p class="checked">Compra guardada ✔</p>
+            <button class="boton-final" id="enviarCompra">Enviar compra</button>`
+          )
+          .ready();
       } else {
         $(`#checked`).empty().append(`Actualizado y guardado ✔`);
       }
-      sendList(i);
+      displayPagos(i);
     }
   });
 }
 
-function sendList(i) {
+//Ingreso de datos para compra
+function displayPagos(i) {
+  $(`#enviarCompra`).on(`click`, function () {
+    $(`#pagosSection`).fadeIn(500);
+  });
+}
+
+function closePagos() {
+  $(`.cierre`).on(`click`, function () {
+    $(`#pagosSection`).fadeOut(500);
+  });
+}
+
+function confirmarCompra() {
+  $(`#submitForm`).on(`click`, function (e) {
+    e.preventDefault();
+    let dniInput = document.getElementById("dni").value;
+    let nombreInput = document.getElementById("apellido").value;
+    let ApellidoInput = document.getElementById("nombre").value;
+    let emailInput = document.getElementById("email").value;
+    let telefonoInput = document.getElementById("tel").value;
+    let tipoTarjetaInput = document.getElementsByClassName("tarjeta").value;
+    let numTarjetaInput = document.getElementById("numTarjeta").value;
+    let vencimientoInput = document.getElementById("vencimiento").value;
+    let codSeguridadInput = document.getElementById("codSeguridad").value;
+
+    let titularTarjeta = new datosTarjeta(
+      nombreInput,
+      ApellidoInput,
+      dniInput,
+      emailInput,
+      telefonoInput,
+      tipoTarjetaInput,
+      numTarjetaInput,
+      vencimientoInput,
+      codSeguridadInput
+    );
+
+    console.log(titularTarjeta);
+    sendList(datosTarjeta);
+  });
+}
+
+function sendList(cliente) {
   //se realiza el post del cart
   const URLGET = `https://jsonplaceholder.typicode.com/posts`;
-  i++;
-  $(`#enviar-compra`).on(`click`, function () {
+  $(`#submitForm`).on(`click`, function () {
     $.post(URLGET, cart, function (respuesta) {
       $(`#cart`).empty();
-      for (respuesta of cart) {
-        $(`#cart`).append(
-          `<p class="sendList">Enviada solicitud de compra para: Organizador ${respuesta.nombre} ✔</p>`
-        );
-      }
+      cierreCompra(cliente);
     });
   });
+}
+
+function cierreCompra(datosTarjeta) {
+  alert("cierre");
+  $(`#form`).hide();
+  $(`h1.titles`).hide();
+  $(`#pagosSection`).append(`<h2>Muchas gracias por su compra</h2>`);
 }
 
 // anidacion
@@ -219,6 +293,11 @@ function app() {
 
   //Guardar carro
   saveList();
+
+  //Pagos
+  displayPagos();
+  closePagos();
+  confirmarCompra();
 }
 
 //app

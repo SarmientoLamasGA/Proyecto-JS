@@ -149,6 +149,100 @@
       </div>
     </section>
 
+    <section id="pagosSection" class="">
+      <div id="pagosDiv">
+        <div class="cierre">
+          <img src="../Multimedia/close.svg" alt="cerrar" id="closeCross" />
+        </div>
+        <h1 class="titles">INGRESE SUS DATOS</h1>
+        <form>
+          <div class="input-form">
+            <label>Nombre del titular</label>
+            <input type="nombre" id="nombre" name="nombre" required />
+          </div>
+          <div class="input-form">
+            <label>Apellido del titular</label>
+            <input type="apellido" id="apellido" name="apellido" required />
+          </div>
+          <div class="input-form">
+            <label>DNI: </label>
+            <input type="number" id="dni" name="dni" required />
+          </div>
+          <div class="input-form">
+            <label>Email </label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="input-form">
+            <label>Teléfono de contacto: </label>
+            <input
+              type="tel"
+              id="tel"
+              name="tel"
+              placeholder="11-XXXX-XXXX"
+              pattern="[0-9]{2}[0-9]{4}[0-9]{4}"
+              maxlength="10"
+              required
+            />
+          </div>
+          <div class="input-form" id="inputCard">
+            <label> Medio de pago:</label>
+            <label>Crédito </label>
+            <input
+              type="radio"
+              id="credito"
+              class="tarjeta"
+              name="tipoTarjeta"
+              value="credito"
+              required
+            />
+            <label>Débito </label>
+            <input
+              type="radio"
+              id="debito"
+              class="tarjeta"
+              name="tipoTarjeta"
+              value="debito"
+              required
+            />
+          </div>
+          <div class="input-form">
+            <label>Número de tarjeta(sin espacios) </label>
+            <input
+              type="number"
+              id="numTarjeta"
+              name="tarjeta"
+              placeholder="XXXX XXXX XXXX XXXX"
+              pattern="[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}"
+              maxlength="10"
+              required
+            />
+          </div>
+          <div class="input-form">
+            <label>Vencimiento </label>
+            <input
+              type="date"
+              id="vencimiento"
+              name="vencimiento"
+              value="vencimiento"
+              required
+            />
+          </div>
+          <div class="input-form">
+            <label>Código de seguridad</label>
+            <input
+              type="number"
+              id="codSeguridad"
+              name="codSeguridad"
+              value="codSeguridad"
+              maxlength="10"
+              required
+            />
+          </div>
+          <button id="submitForm">Finalizar compra</button>
+        </form>
+      </div>
+    </section>
+
     <footer class="footer">
       <div class="footer__copyright text-center" id="copyright">
         Copyright - 2021. Todos los derechos reservados.
