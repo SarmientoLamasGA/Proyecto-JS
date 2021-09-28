@@ -138,15 +138,9 @@
       }
       #list {
         .buyListObject {
-          display: flex;
-          flex-direction: column;
-          align-content: center;
           font-size: 1.3rem;
         }
         .buyListTotal {
-          display: flex;
-          flex-direction: column;
-          align-content: center;
           background-color: $color-salmon-intenso;
           font-size: 1.5rem;
           font-weight: bold;

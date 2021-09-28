@@ -106,18 +106,18 @@ function crearCatalogo() {
             //se elige producto, se hace el push al carro y se imprime en forma de lista
             click++; //contador de clicks ver linea 113
             cart.push(producto);
-            $(`#list`).prepend(
-              `<li class="buyListObject">Organizador ${producto.nombre} $${producto.precio}</li>`
+            $(`#list`).append(
+              `<tr class="buyListObject"> <td>Organizador ${producto.nombre}</td> <td>$${producto.precio}</td> <td><button class="delete${producto.nombre}">X</button></td> </tr>`
             );
             if (click == 1) {
               //si se hace un click en un botón se imprime un "li" con el total
-              $(`#list`).append(
-                `<li class="buyListTotal">El costo total es de: ${sumarTotal()}</li>`
+              $(`#total`).append(
+                `<th class="buyListTotal">El costo total es de: ${sumarTotal()}</th>`
               );
               total = sumarTotal();
             } else {
               //si se vuelve a hacer click, se modifica el "li" del total
-              $(`#list`).ready(function () {
+              $(`#total`).ready(function () {
                 $(`.buyListTotal`)
                   .empty()
                   .append(`El costo total es de: ${sumarTotal()}`);
@@ -125,6 +125,14 @@ function crearCatalogo() {
             }
             messageAdd(click);
             cantidadCart();
+          });
+          //BORRAR
+          $(`.delete${producto.nombre}`).on(`click`, function () {
+            alert("click");
+            const producto = cart.find((p) => p.id === producto.id);
+
+            const indexProducto = cart.indexOf(producto);
+            carrito.splice(indexProducto, 1);
           });
         }
       }
@@ -150,7 +158,7 @@ function messageAdd(click) {
       });
   } else {
     $(`.mensajeCompra`).append(
-      `<p id="compraNro${click}">Se ha agregado un producto al carrito</p>`
+      `<p id="compraNro${click}">Se ha agregado otro producto al carrito</p>`
     );
     $(`#compraNro${click}`)
       .hide()
@@ -181,6 +189,15 @@ function cantidadCart() {
       .append(`Cantidad de productos en el carrito: ${cart.length}`);
   }
 }
+
+/*function borrarProducto() {
+  $(`#delete${producto.nombre}`).on(`click`, function () {
+    const producto = cart.find((p) => p.id === producto.id);
+
+    const indexProducto = cart.indexOf(producto);
+    carrito.splice(indexProducto, 1);
+  });
+}*/
 
 function sumarTotal() {
   //sumar precios
@@ -260,8 +277,10 @@ function confirmarCompra() {
       codSeguridadInput
     );
 
-    console.log(titularTarjeta);
-    sendList(datosTarjeta);
+    console.log(User);
+    sendList(titularTarjeta);
+
+    confirmacionFinal(dniInput, nombreInput, ApellidoInput, cart, datosTarjeta);
   });
 }
 
@@ -271,16 +290,38 @@ function sendList(cliente) {
   $(`#submitForm`).on(`click`, function () {
     $.post(URLGET, cart, function (respuesta) {
       $(`#cart`).empty();
-      cierreCompra(cliente);
     });
   });
 }
 
+function confirmacionFinal(
+  dniInput,
+  nombreInput,
+  ApellidoInput,
+  cart,
+  datosTarjeta
+) {
+  let confirmacion = confirm("¿Desea confirmar esta compra?");
+
+  if (confirmacion) {
+    let user = new User(
+      dniInput,
+      nombreInput,
+      ApellidoInput,
+      cart,
+      datosTarjeta
+    );
+    console.log(user);
+    cierreCompra(datosTarjeta);
+  }
+}
+
 function cierreCompra(datosTarjeta) {
   alert("cierre");
-  $(`#form`).hide();
-  $(`h1.titles`).hide();
-  $(`#pagosSection`).append(`<h2>Muchas gracias por su compra</h2>`);
+  $(`#pagosSection`).fadeOut(500);
+  $(`#cart`)
+    .empty()
+    .append(`<h1 class="titles">Muchas gracias por su compra</h1>`);
 }
 
 // anidacion
