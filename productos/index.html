@@ -215,10 +215,11 @@
           <div class="input-form">
             <label>Número de tarjeta(sin espacios) </label>
             <input
-              type="number"
+              type="text"
               id="numTarjeta"
               name="tarjeta"
               placeholder="XXXX XXXX XXXX XXXX"
+              onkeypress="return numbersBar(event)"
               pattern="[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}"
               maxlength="10"
               required
@@ -227,10 +228,12 @@
           <div class="input-form">
             <label>Vencimiento </label>
             <input
-              type="date"
+              type="text"
               id="vencimiento"
               name="vencimiento"
-              value="vencimiento"
+              placeholder="MM/AA"
+              maxlength="5"
+              onkeypress="return numbersBar(event)"
               required
             />
           </div>
@@ -241,7 +244,9 @@
               id="codSeguridad"
               name="codSeguridad"
               value="codSeguridad"
-              maxlength="10"
+              placeholder="SCS"
+              maxlength="3"
+              onkeypress="return numbersBar(event)"
               required
             />
           </div>

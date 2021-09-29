@@ -51,34 +51,6 @@ function closeCart() {
   });
 }
 
-//Generar usuario
-function createUser() {
-  $(`#submit-form`).on(`click`, function (e) {
-    e.preventDefault();
-
-    let dniUsuario = $(`#dni`).val();
-    let nombreUsuario = $(`#nombre`).val();
-    let apellidoUsuario = $(`#apellido`).val();
-
-    let usuario = new User(dniUsuario, nombreUsuario, apellidoUsuario);
-
-    saveUser(usuario);
-    checkUser();
-  });
-}
-
-function saveUser(usuario) {
-  localStorage.setItem(1, JSON.stringify(usuario));
-}
-
-function checkUser() {
-  if (usuario == 1) {
-    const userLogged = Clientes.find((element) => element === 1);
-    alert(userLogged);
-    $(`#logIn`).load().empty().append(`${userLogged}`);
-  }
-}
-
 //EDICION DOM
 function crearCatalogo() {
   // genera catalogo HTML
@@ -101,42 +73,62 @@ function crearCatalogo() {
           <button class="boton" id="boton-${producto.nombre}">Agregar al carrito</button>
           </div>`);
 
-          //SELECCION
-          $(`#boton-${producto.nombre}`).on(`click`, function () {
-            //se elige producto, se hace el push al carro y se imprime en forma de lista
-            click++; //contador de clicks ver linea 113
-            cart.push(producto);
-            $(`#list`).append(
-              `<tr class="buyListObject"> <td>Organizador ${producto.nombre}</td> <td>$${producto.precio}</td> <td><button class="delete${producto.nombre}">X</button></td> </tr>`
-            );
-            if (click == 1) {
-              //si se hace un click en un botón se imprime un "li" con el total
-              $(`#total`).append(
-                `<th class="buyListTotal">El costo total es de: ${sumarTotal()}</th>`
-              );
-              total = sumarTotal();
-            } else {
-              //si se vuelve a hacer click, se modifica el "li" del total
-              $(`#total`).ready(function () {
-                $(`.buyListTotal`)
-                  .empty()
-                  .append(`El costo total es de: ${sumarTotal()}`);
-              });
-            }
-            messageAdd(click);
-            cantidadCart();
-          });
-          //BORRAR
-          $(`.delete${producto.nombre}`).on(`click`, function () {
-            alert("click");
-            const producto = cart.find((p) => p.id === producto.id);
-
-            const indexProducto = cart.indexOf(producto);
-            carrito.splice(indexProducto, 1);
-          });
+          //Interacción con DOM
+          interactuarBotones(producto, click);
         }
       }
     }
+  });
+}
+
+function interactuarBotones(producto, click) {
+  //Seleccion de catalogo
+  $(`#boton-${producto.nombre}`).on(`click`, function () {
+    //se elige producto, se hace el push al carro y se imprime en forma de lista
+    click++;
+    cart.push(producto);
+    $(`#list`).append(
+      `<tr class="buyListObject object${producto.nombre}"> 
+      <td>Organizador ${producto.nombre}</td> 
+      <td>$${producto.precio}</td> 
+      <td><button class="delete${producto.nombre}">X</button></td> 
+      </tr>`
+    );
+
+    if (click == 1) {
+      //si se hace un click en un botón se imprime una linea con el total
+      $(`#total`).append(
+        `<th class="buyListTotal">El costo total es de: ${sumarTotal()}</th>`
+      );
+      total = sumarTotal();
+    } else {
+      //si se vuelve a hacer click, se modifica la linea del total
+      $(`#total`).ready(function () {
+        $(`.buyListTotal`)
+          .empty()
+          .append(`El costo total es de: ${sumarTotal()}`);
+      });
+    }
+
+    messageAdd(click);
+    borrarDelCarro(producto);
+    cantidadCart();
+  });
+}
+
+function borrarDelCarro(producto) {
+  $(`.delete${producto.nombre}`).on(`click`, function () {
+    alert("click");
+    let organizador = cart.find((x) => x.id === producto.id);
+    let indexProducto = cart.indexOf(organizador);
+    cart.splice(indexProducto, 1);
+    $(`.object${producto.nombre}`).remove();
+    $(`#total`).ready(function () {
+      $(`.buyListTotal`)
+        .empty()
+        .append(`El costo total es de: ${sumarTotal()}`);
+    });
+    cantidadCart();
   });
 }
 
@@ -190,15 +182,6 @@ function cantidadCart() {
   }
 }
 
-/*function borrarProducto() {
-  $(`#delete${producto.nombre}`).on(`click`, function () {
-    const producto = cart.find((p) => p.id === producto.id);
-
-    const indexProducto = cart.indexOf(producto);
-    carrito.splice(indexProducto, 1);
-  });
-}*/
-
 function sumarTotal() {
   //sumar precios
   let total = 0;
@@ -214,9 +197,6 @@ function saveList() {
   let i = 0;
   $(`#guardar-compra`).on(`click`, function () {
     i++;
-    const savedList = JSON.stringify(cart);
-    localStorage.setItem("CompraDeUsuario", savedList);
-    console.log("se ha guardado su compra" + savedList);
 
     if (cart.length == 0) {
       //se verifica si hay productos en el carro
@@ -224,16 +204,6 @@ function saveList() {
         "No se han detectado productos en el carro, por favor seleccione uno"
       );
     } else {
-      if (i == 1) {
-        $(`#cart`)
-          .append(
-            `<p class="checked">Compra guardada ✔</p>
-            <button class="boton-final" id="enviarCompra">Enviar compra</button>`
-          )
-          .ready();
-      } else {
-        $(`#checked`).empty().append(`Actualizado y guardado ✔`);
-      }
       displayPagos(i);
     }
   });
@@ -241,15 +211,41 @@ function saveList() {
 
 //Ingreso de datos para compra
 function displayPagos(i) {
-  $(`#enviarCompra`).on(`click`, function () {
-    $(`#pagosSection`).fadeIn(500);
-  });
+  $(`#pagosSection`).fadeIn(500);
 }
 
 function closePagos() {
   $(`.cierre`).on(`click`, function () {
     $(`#pagosSection`).fadeOut(500);
   });
+}
+
+function numbers(e) {
+  if (window.event) {
+    keyNum = e.keyCode;
+  } else {
+    keyNum = e.which;
+  }
+
+  if ((keyNum > 47 && keyNum < 58) || keyNum == 8 || keyNum == 13) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function numbersBar(e) {
+  if (window.event) {
+    keyNum = e.keyCode;
+  } else {
+    keyNum = e.which;
+  }
+
+  if ((keyNum > 46 && keyNum < 58) || keyNum == 8 || keyNum == 13) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function confirmarCompra() {
@@ -281,6 +277,7 @@ function confirmarCompra() {
     sendList(titularTarjeta);
 
     confirmacionFinal(dniInput, nombreInput, ApellidoInput, cart, datosTarjeta);
+    saveList();
   });
 }
 
@@ -330,19 +327,14 @@ function app() {
   displayCart();
   closeCart();
 
-  //Funciones usuario
-  createUser();
-
   //Funcion catalogo
   crearCatalogo();
-
-  //Guardar carro
-  saveList();
 
   //Pagos
   displayPagos();
   closePagos();
   confirmarCompra();
+  saveList();
 }
 
 //app
