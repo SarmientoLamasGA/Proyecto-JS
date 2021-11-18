@@ -712,18 +712,6 @@ header nav .nav__navbar .nav__collapse .nav__list .nav__item .nav__link .nav__bu
   background-color: pink;
 }
 
-.user-bar .user-bar__user-section {
-  margin: 0 2.5% 0 2.5%;
-  padding: 1rem;
-}
-
-.user-bar .user-bar__user-section .user-bar__user-info {
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
-  font-size: 1rem;
-}
-
 .compras .title-box {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -747,6 +735,10 @@ header nav .nav__navbar .nav__collapse .nav__list .nav__item .nav__link .nav__bu
 }
 
 .compras .catalogo .caja-de-producto {
+  border-style: double;
+  border-radius: 30px;
+  border-color: violet;
+  border-width: 5px;
   background-color: #ffd6ba;
   padding: 2rem;
   width: 30%;
@@ -765,6 +757,8 @@ header nav .nav__navbar .nav__collapse .nav__list .nav__item .nav__link .nav__bu
 }
 
 .compras .catalogo .caja-de-producto .titulo-tarjeta {
+  font-size: 2rem;
+  text-decoration: underline;
   text-align: center;
   text-transform: uppercase;
 }
@@ -782,22 +776,32 @@ header nav .nav__navbar .nav__collapse .nav__list .nav__item .nav__link .nav__bu
   aspect-ratio: 1/1;
   width: 70%;
   height: 70%;
+  border-radius: 30px;
+  border-style: double;
+  border-color: violet;
 }
 
 .compras .catalogo .caja-de-producto .texto-producto {
   margin: 2rem;
   text-align: center;
+  font-weight: bold;
 }
 
 .compras .catalogo .caja-de-producto .texto-producto p {
-  font-size: 1.3rem;
+  font-size: 2rem;
 }
 
 .compras .catalogo .caja-de-producto .boton {
+  font-size: 1.2rem;
   width: 50%;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+  background-color: #f5ad7d;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 30px;
+  border-color: black;
 }
 
 #buySection {
@@ -825,6 +829,10 @@ header nav .nav__navbar .nav__collapse .nav__list .nav__item .nav__link .nav__bu
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  border: solid;
+  border-color: violet;
+  border-width: 5px;
+  border-radius: 30px;
 }
 
 #buySection #buyDiv #cierre #textCross {
@@ -844,10 +852,6 @@ header nav .nav__navbar .nav__collapse .nav__list .nav__item .nav__link .nav__bu
   -webkit-transition: 1s;
   transition: 1s;
   cursor: pointer;
-}
-
-#buySection #buyDiv #cierre #closeCross:hover #textCross {
-  display: inline-block;
 }
 
 #buySection #buyDiv .cartTitle {
@@ -882,14 +886,49 @@ header nav .nav__navbar .nav__collapse .nav__list .nav__item .nav__link .nav__bu
       align-content: center;
 }
 
-#buySection #buyDiv .cart #list .buyListObject {
-  font-size: 1.3rem;
+#buySection #buyDiv .cart #list {
+  background-color: #fcf3cf;
+  font-size: 1.5rem;
+  border-style: dashed;
+  border-width: 1px;
 }
 
-#buySection #buyDiv .cart #list .buyListTotal {
+#buySection #buyDiv .cart #list tr {
+  border: dashed;
+  border-width: 1px;
+}
+
+#buySection #buyDiv .cart #list tr th {
+  text-align: center;
+}
+
+#buySection #buyDiv .cart #list tr th .boton-borrar {
+  width: 30%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  width: 50%;
+  align-self: center;
+  background-color: red;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 30px;
+  border-color: black;
+}
+
+#buySection #buyDiv .cart #total {
   background-color: #f5ad7d;
   font-size: 1.5rem;
   font-weight: bold;
+  border-style: solid;
+  border-width: 2px;
+}
+
+#buySection #buyDiv .cart #total .buyListTotal {
+  text-align: center;
 }
 
 #buySection #buyDiv .cart #calcular-total {
@@ -906,6 +945,14 @@ header nav .nav__navbar .nav__collapse .nav__list .nav__item .nav__link .nav__bu
       -ms-grid-row-align: center;
       align-self: center;
   margin: 1rem;
+  font-size: 1.2rem;
+  width: 50%;
+  align-self: center;
+  background-color: #f5ad7d;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 30px;
+  border-color: black;
 }
 
 #buySection #buyDiv .checked {
@@ -945,7 +992,7 @@ header nav .nav__navbar .nav__collapse .nav__list .nav__item .nav__link .nav__bu
 
 #pagosSection #pagosDiv {
   margin: 2rem auto 2rem auto;
-  width: 80%;
+  width: 50%;
   background-color: #ffd6ba;
   position: relative;
   display: -webkit-box;
@@ -955,6 +1002,10 @@ header nav .nav__navbar .nav__collapse .nav__list .nav__item .nav__link .nav__bu
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  border: solid;
+  border-color: violet;
+  border-width: 5px;
+  border-radius: 30px;
 }
 
 #pagosSection #pagosDiv .cierre #textCross {
@@ -1014,6 +1065,19 @@ header nav .nav__navbar .nav__collapse .nav__list .nav__item .nav__link .nav__bu
 
 #pagosSection #pagosDiv form .input-form input {
   font-size: 1.5rem;
+}
+
+#pagosSection #pagosDiv form #submitForm {
+  font-size: 1.2rem;
+  width: 50%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  background-color: #f5ad7d;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 30px;
+  border-color: black;
 }
 
 .mensajeCompra {

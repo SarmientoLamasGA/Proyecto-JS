@@ -89,16 +89,16 @@ function interactuarBotones(producto, click) {
     cart.push(producto);
     $(`#list`).append(
       `<tr class="buyListObject object${producto.nombre}"> 
-      <td>Organizador ${producto.nombre}</td> 
-      <td>$${producto.precio}</td> 
-      <td><button class="delete${producto.nombre}">X</button></td> 
+      <th>Organizador ${producto.nombre}</th> 
+      <th>$${producto.precio}</th> 
+      <th><button class="delete${producto.nombre} boton-borrar">X</button></th> 
       </tr>`
     );
 
     if (click == 1) {
       //si se hace un click en un botón se imprime una linea con el total
       $(`#total`).append(
-        `<th class="buyListTotal">El costo total es de: ${sumarTotal()}</th>`
+        `<th class="buyListTotal">El costo total es de: ${sumarTotal()}`
       );
       total = sumarTotal();
     } else {
@@ -187,15 +187,14 @@ function sumarTotal() {
   let total = 0;
   for (producto of cart) {
     total += producto.precio;
-    console.log(total);
   }
   return total;
 }
 
-//bonton enviar compra = guardar en storage el array
-function saveList() {
+//bonton continuar compra
+function continuarCompra() {
   let i = 0;
-  $(`#guardar-compra`).on(`click`, function () {
+  $(`#continuar-compra`).on(`click`, function () {
     i++;
 
     if (cart.length == 0) {
@@ -251,15 +250,15 @@ function numbersBar(e) {
 function confirmarCompra() {
   $(`#submitForm`).on(`click`, function (e) {
     e.preventDefault();
-    let dniInput = document.getElementById("dni").value;
-    let nombreInput = document.getElementById("apellido").value;
-    let ApellidoInput = document.getElementById("nombre").value;
-    let emailInput = document.getElementById("email").value;
-    let telefonoInput = document.getElementById("tel").value;
-    let tipoTarjetaInput = document.getElementsByClassName("tarjeta").value;
-    let numTarjetaInput = document.getElementById("numTarjeta").value;
-    let vencimientoInput = document.getElementById("vencimiento").value;
-    let codSeguridadInput = document.getElementById("codSeguridad").value;
+    let dniInput = parseInt($("#dni").val());
+    let nombreInput = $("#apellido").val();
+    let ApellidoInput = $("#nombre").val();
+    let emailInput = $("#email").val();
+    let telefonoInput = $("#tel").val();
+    let tipoTarjetaInput = $(".tarjeta").val();
+    let numTarjetaInput = parseInt($("#numTarjeta").val());
+    let vencimientoInput = $("#vencimiento").val();
+    let codSeguridadInput = parseInt($("#codSeguridad").val());
 
     let titularTarjeta = new datosTarjeta(
       nombreInput,
@@ -273,21 +272,13 @@ function confirmarCompra() {
       codSeguridadInput
     );
 
-    console.log(User);
-    sendList(titularTarjeta);
-
-    confirmacionFinal(dniInput, nombreInput, ApellidoInput, cart, datosTarjeta);
-    saveList();
-  });
-}
-
-function sendList(cliente) {
-  //se realiza el post del cart
-  const URLGET = `https://jsonplaceholder.typicode.com/posts`;
-  $(`#submitForm`).on(`click`, function () {
-    $.post(URLGET, cart, function (respuesta) {
-      $(`#cart`).empty();
-    });
+    confirmacionFinal(
+      dniInput,
+      nombreInput,
+      ApellidoInput,
+      cart,
+      titularTarjeta
+    );
   });
 }
 
@@ -299,22 +290,22 @@ function confirmacionFinal(
   datosTarjeta
 ) {
   let confirmacion = confirm("¿Desea confirmar esta compra?");
-
-  if (confirmacion) {
-    let user = new User(
+  if (confirmacion == true) {
+    let usuario = new User(
       dniInput,
       nombreInput,
       ApellidoInput,
       cart,
       datosTarjeta
     );
-    console.log(user);
+    localStorage.setItem(`Usuario`, JSON.stringify(usuario));
+    localStorage.setItem(`compraUsuario`, JSON.stringify(cart));
+    cart.length = 0;
     cierreCompra(datosTarjeta);
   }
 }
 
 function cierreCompra(datosTarjeta) {
-  alert("cierre");
   $(`#pagosSection`).fadeOut(500);
   $(`#cart`)
     .empty()
@@ -331,10 +322,9 @@ function app() {
   crearCatalogo();
 
   //Pagos
-  displayPagos();
   closePagos();
+  continuarCompra();
   confirmarCompra();
-  saveList();
 }
 
 //app

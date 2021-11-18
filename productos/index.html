@@ -117,19 +117,14 @@
             <p id="cartNumber"></p>
           </div>
         </div>
-        <div class="user-bar__user-section">
-          <div class="user-bar__user-info" id="userDiv">
-            <p id="logIn">Ingresar Usuario</p>
-          </div>
-        </div>
       </div>
+
       <section class="compras">
         <div class="title-box">
           <h1 class="titles">Sección de compras</h1>
           <br />
           <h2 class="subtitles">Nuestro catalogo de organizadores</h2>
         </div>
-
         <div class="catalogo"></div>
       </section>
     </main>
@@ -149,8 +144,8 @@
             </tr>
           </table>
           <table id="total"></table>
-          <button class="boton-final" id="guardar-compra">
-            Guardar compra
+          <button class="boton-final" id="continuar-compra">
+            Continuar compra
           </button>
         </div>
       </div>
@@ -240,10 +235,9 @@
           <div class="input-form">
             <label>Código de seguridad</label>
             <input
-              type="number"
+              type="text"
               id="codSeguridad"
               name="codSeguridad"
-              value="codSeguridad"
               placeholder="SCS"
               maxlength="3"
               onkeypress="return numbersBar(event)"
